@@ -47,7 +47,7 @@ function applyTheme(theme, save=false){
     const icon = btn.querySelector('.theme-icon');
     const text = btn.querySelector('.theme-text');
     if (icon) icon.textContent = isLight ? '☀️' : '🌙';
-    if (text) text.textContent = isLight ? 'Dark' : 'Light';
+    if (text) text.textContent = isLight ? 'Light' : 'Dark';
   }
 
   // Update browser UI color (nice on mobile)

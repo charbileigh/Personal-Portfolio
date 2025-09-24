@@ -4,7 +4,7 @@ This is a mobile‑first, responsive portfolio starter built with semantic HTML,
 
 ## Authors
 
-- [@ChabiFrancesca Seopa](https://www.github.com/charbileigh)
+- [@Chabi Francesca Seopa](https://www.github.com/charbileigh)
 
 
 ## How to use

@@ -23,6 +23,10 @@
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
+      <button class="theme-toggle" aria-pressed="false" aria-label="Toggle light/dark theme">
+        <span class="theme-icon" aria-hidden="true">🌙</span>
+        <span class="theme-text">Light</span>
+      </button>      
       <nav id="site-nav" class="site-nav" aria-label="Primary">
         <ul>
           <li><a href="#home"> ⋆˙⟡ Home</a></li>
@@ -159,3 +163,19 @@
   </footer>
 </body>
 </html>
+
+
+
+
+
+
+<script>
+  (function(){
+    try{
+      var saved = localStorage.getItem('theme');
+      var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved || (systemDark ? 'dark' : 'light');
+      if (theme === 'light') document.documentElement.setAttribute('data-theme','light');
+    }catch(e){}
+  })();
+</script>

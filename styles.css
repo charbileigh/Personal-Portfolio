@@ -9,6 +9,32 @@
   --shadow: 0 10px 30px rgba(255, 3, 183, 0.15);
 }
 
+/* Light theme overrides */
+:root[data-theme="light"]{
+  --bg: #f6f7fb;
+  --fg: #0e1420;
+  --muted: #4a5568;
+  --accent: #C0448F;            /* keep your pink accent */
+  --card: #ffffff;
+  --border: #e3e8ef;
+  --shadow: 0 10px 30px rgba(12, 19, 31, 0.08);
+}
+
+/* Optional: smooth color transitions */
+*{ transition: color .2s linear, background-color .2s linear, border-color .2s linear; }
+.avatar{ transition: box-shadow .2s linear, background .2s linear; }
+
+/* Theme toggle button (simple) */
+.theme-toggle{
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:transparent; color:var(--fg);
+  border:1px solid var(--border); border-radius:.6rem;
+  padding:.5rem .75rem; cursor:pointer; font-weight:600;
+}
+.theme-toggle:hover{ background:rgba(235, 3, 215, 0.1); }
+.theme-toggle .theme-icon{ width:1.1rem; display:inline-block; }
+
+
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{

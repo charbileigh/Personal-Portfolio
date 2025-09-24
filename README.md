@@ -9,12 +9,12 @@ This is a mobile‑first, responsive portfolio starter built with semantic HTML,
 
 ## How to use
 1. Firstly clone the project by HTTPS: https://github.com/charbileigh/Personal-Portfolio.git
-   or by GitHub CLI: gh repo clone charbileigh/Personal-Portfolio
-2. Edit `index.html` content (text, links).
-3. Adjust colors in `styles.css` if you want to change the theme.
-4. Add project screenshots to `/assets` and link them in the Projects section.
-5. Test locally by opening `index.html` in your browser.
-6. Deploy by pushing to a GitHub repo and enabling GitHub Pages (branch: `main`, folder: `/root`).
+2. Or clone by GitHub CLI: gh repo clone charbileigh/Personal-Portfolio
+3. Edit `index.html` content (text, links).
+4. Adjust colors in `styles.css` if you want to change the theme.
+5. Add project screenshots to `/assets` and link them in the Projects section.
+6. Test locally by opening `index.html` in your browser.
+7. Deploy by pushing to a GitHub repo and enabling GitHub Pages (branch: `main`, folder: `/root`).
 
 ## Accessibility
 - All Browser Types Friendly.

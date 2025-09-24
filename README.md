@@ -10,11 +10,10 @@ This is a mobile‑first, responsive portfolio starter built with semantic HTML,
 5. Deploy by pushing to a GitHub repo and enabling GitHub Pages (branch: `main`, folder: `/root`).
 
 ## Accessibility
-- Skip link, semantic landmarks, accessible nav toggle, and sufficient color contrast.
 - Keyboard friendly.
 
 ## Performance
-- No frameworks, minimal JS, system fonts (Inter), and CSS only layout = very fast.
+- No frameworks, minimal JS, CSS and HTML
 
 ## License
-You own this. Do whatever you like.
+I own this license. However, this repo cannot be used for commercial purposes. 

@@ -17,10 +17,10 @@
   --accent: #C0448F;            /* keep your pink accent */
   --card: #ffffff;
   --border: #e3e8ef;
-  --shadow: 0 10px 30px rgba(12, 19, 31, 0.08);
+  --shadow: 0 10px 30px rgba(21, 12, 31, 0.321);
 }
 
-/* Optional: smooth color transitions */
+/* smooth color transitions */
 *{ transition: color .2s linear, background-color .2s linear, border-color .2s linear; }
 .avatar{ transition: box-shadow .2s linear, background .2s linear; }
 
@@ -94,6 +94,54 @@ p{margin:0 0 1rem}
   .site-nav.open{display:block}
   .site-nav ul{flex-direction:column; padding: .5rem}
 }
+
+/* These are the new navigation bar colours which may need to be edited */
+/* 1) Add header-specific vars */
+:root{
+  --header-bg: rgba(11,15,20,.7);  /* dark default */
+  --header-border: var(--border);
+  --nav-icon: var(--fg);           /* hamburger/icon color */
+  --nav-hover-bg: rgba(235, 3, 215, 0.12);
+}
+
+:root[data-theme="light"]{
+  --header-bg: rgba(255,255,255,.75);   /* light glass */
+  --header-border: #e3e8ef;
+  --nav-icon: #0e1420;                  /* dark bars/icons */
+  --nav-hover-bg: rgba(0,0,0,.06);      /* softer hover */
+}
+
+/* 2) Use those vars in the header + nav */
+.site-header{
+  position: sticky; top: 0; z-index: 10;
+  background: var(--header-bg);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--header-border);
+  color: var(--fg);
+}
+
+/* Hamburger bars use the icon var, not fg */
+.nav-toggle span{
+  display:block; width:26px; height:2px;
+  background: var(--nav-icon);
+  margin:5px 0; border-radius:2px;
+}
+
+/* Nav link colors + hover work in both themes */
+.site-nav a{
+  color: var(--muted);
+  text-decoration:none; padding:.5rem; border-radius:.5rem;
+}
+.site-nav a:hover{
+  color: var(--fg);
+  background: var(--nav-hover-bg);
+}
+
+/* Mobile menu background should follow theme */
+@media (max-width: 800px){
+  .site-nav{ background: var(--bg); border-bottom:1px solid var(--header-border); }
+}
+
 
 
 /* existing hero layout */

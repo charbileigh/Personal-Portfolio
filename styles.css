@@ -1,0 +1,216 @@
+/* Base theme */
+:root{
+  --bg: #0b0f14;
+  --fg: #e6edf3;
+  --muted: #b5c1cc;
+  --accent: #C0448F;
+  --card: #121821;
+  --border: #1c2531;
+  --shadow: 0 10px 30px rgba(255, 3, 183, 0.15);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--fg);
+  background: radial-gradient(1200px 800px at 80% -20%, rgba(124,172,248,.15), transparent 60%), var(--bg);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container{
+  width:min(1100px, 92%);
+  margin-inline:auto;
+}
+
+.narrow{width:min(800px, 92%)}
+
+.section{padding: clamp(3rem, 6vw, 6rem) 0}
+
+h1,h2,h3{line-height:1.2;margin:0 0 .75rem}
+h1{font-size: clamp(2rem, 4vw, 3rem)}
+h2{font-size: clamp(1.5rem, 3vw, 2rem)}
+h3{font-size: clamp(1.1rem, 2.2vw, 1.25rem)}
+
+p{margin:0 0 1rem}
+.lead{font-size: clamp(1rem, 2.2vw, 1.25rem);color: var(--muted)}
+
+.eyebrow{letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:700}
+
+/* Header */
+.site-header{
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(11,15,20,.7);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: .75rem 0;
+}
+.brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--fg);font-weight:700}
+.brand-initials{background:var(--accent);color:#0b0f14;border-radius:10px;padding:.25rem .5rem}
+.brand-name{opacity:.9}
+
+.site-nav ul{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
+.site-nav a{color:var(--muted);text-decoration:none;padding:.5rem;border-radius:.5rem}
+.site-nav a:hover{color:var(--fg);background:rgba(235, 3, 215, 0.315)}
+
+/* Mobile nav */
+.nav-toggle{display:none;background:none;border:0;cursor:pointer}
+.nav-toggle span{display:block;width:26px;height:2px;background:var(--fg);margin:5px 0;border-radius:2px}
+
+@media (max-width: 800px){
+  .nav-toggle{display:block}
+  .site-nav{position:absolute; inset: 60px 0 auto 0; display:none; background:var(--bg); border-bottom:1px solid var(--border)}
+  .site-nav.open{display:block}
+  .site-nav ul{flex-direction:column; padding: .5rem}
+}
+
+/* Hero */
+/*.hero-grid{display:grid; grid-template-columns: 1.3fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items:center}
+.avatar{width: 220px; height:220px; border-radius: 22px; background: linear-gradient(135deg, rgba(124,172,248,.25), rgba(124,172,248,.05)); border:1px solid var(--border); box-shadow: var(--shadow); margin-inline:auto}
+
+@media (max-width: 900px){
+  .hero-grid{grid-template-columns: 1fr}
+}*/
+
+/* Your existing hero layout */
+.hero-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:clamp(1.5rem,4vw,3rem); align-items:center}
+@media (max-width:900px){ .hero-grid{grid-template-columns:1fr} }
+
+/* Avatar card shell – unchanged look */
+.avatar{
+  --background_color:#000;
+  --color_purple_light:#e2a9e5;
+  --color_purple_med:#632c65;
+  --color_purple_dark:#4b384c;
+  --time:2.5s;
+
+  width:220px; height:220px; margin-inline:auto;
+  border-radius:22px; position:relative; overflow:hidden;
+  background: linear-gradient(135deg, rgba(124, 172, 248, 0.115), rgba(124, 172, 248, 0.061));
+  border:1px solid var(--border, rgba(255, 255, 255, 0.097));
+  box-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,.25));
+  display:grid; place-items:center;
+}
+
+/* Animation container (your .main/.center adapted inside .avatar) */
+.center{
+  display:flex; position:relative; flex-wrap:wrap; justify-content:center; align-items:center;
+  width:100px; height:100px; border-radius:50%;
+  background-color: rgba(75,56,76,0.25);            /* var(--color_purple_dark) */
+  box-shadow: 0 0 0 2px rgba(99,44,101,0.75);       /* var(--color_purple_med) */
+  animation: spin var(--time) cubic-bezier(0.75,0,0,0.75) infinite forwards;
+}
+
+/* inner ring */
+.center:before{
+  content:""; position:absolute; inset:5px; border:1px solid rgba(99,44,101,0.25); border-radius:50%;
+}
+/* pulsing core */
+.center:after{
+  content:""; position:absolute; inset:40px; border-radius:50%;
+  background-color: var(--color_purple_med);
+  animation: pulse var(--time) ease-in-out infinite alternate;
+}
+
+/* angled corners */
+.angle{
+  display:inline-block; position:relative; width:30px; height:30px;
+  transform: rotate(45deg); border-width:2px; border-color: var(--color_purple_light);
+}
+.angle:first-of-type{
+  border-bottom-style:solid; border-left-style:solid;
+  animation: panL var(--time) ease-in-out infinite alternate;
+}
+.angle:last-of-type{
+  border-top-style:solid; border-right-style:solid;
+  animation: panR var(--time) ease-in-out infinite alternate;
+}
+
+/* the small dots on each angle */
+.angle:before{
+  content:""; position:absolute; width:14px; height:14px; border-radius:50%;
+  background-color: rgba(226,169,229,0.5); left:-8px; top:-8px;
+}
+.angle:first-of-type:before{ animation: slideL var(--time) linear infinite alternate; }
+.angle:last-of-type:before{  animation: slideR var(--time) linear infinite alternate; }
+
+/* keyframes (from your SCSS) */
+@keyframes pulse{
+  0%{transform:scale(1)} 50%{transform:scale(0)} 100%{transform:scale(1)}
+}
+@keyframes spin{
+  0%{transform:rotate(0deg)} 100%{transform:rotate(359deg)}
+}
+@keyframes panL{
+  0%{transform:translate(0,0) rotate(45deg)}
+  50%{transform:translate(15px,0) rotate(45deg)}
+  100%{transform:translate(0,0) rotate(45deg)}
+}
+@keyframes panR{
+  0%{transform:translate(0,0) rotate(45deg)}
+  50%{transform:translate(-15px,0) rotate(45deg)}
+  100%{transform:translate(0,0) rotate(45deg)}
+}
+@keyframes slideL{
+  0%{transform:translate(0,0) scale(.5)}
+  50%{transform:translate(0,30px) scale(1.25)}
+  100%{transform:translate(30px,30px) scale(.5)}
+}
+@keyframes slideR{
+  0%{transform:translate(0,0) scale(.5)}
+  50%{transform:translate(30px,0) scale(1.25)}
+  100%{transform:translate(30px,30px) scale(.5)}
+}
+
+/* accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .center, .center:after, .angle, .angle:before{ animation:none !important }
+}
+
+
+
+/* Buttons */
+.button{
+  display:inline-block; padding:.75rem 1rem; border-radius:.75rem;
+  background: var(--accent); color: #0b0f14; text-decoration:none; font-weight:700; box-shadow: var(--shadow)
+}
+.button.secondary{background:transparent;color:var(--fg);border:1px solid var(--border)}
+.button.small{font-size:.9rem;padding:.5rem .75rem}
+
+/* Cards + timeline */
+.cards-grid{display:grid; grid-template-columns: repeat(12, 1fr); gap: 1rem}
+.cards-grid .card{grid-column: span 4; min-height: 100%;}
+@media (max-width: 900px){
+  .cards-grid .card{grid-column: span 6}
+}
+@media (max-width: 600px){
+  .cards-grid .card{grid-column: span 12}
+}
+.card{
+  background: var(--card);
+  border:1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  box-shadow: var(--shadow);
+}
+.card .meta{opacity:.7;font-weight:600;margin-left:.35rem}
+
+.timeline{display:grid; gap: 1rem}
+.timeline .card h3{margin-bottom:.25rem}
+
+/* Contact */
+.contact-list{display:flex; flex-wrap:wrap; gap: .75rem; padding:0; margin: .5rem 0 0; list-style:none}
+.contact-list a{color:var(--accent); text-decoration:none; border:1px solid var(--border); padding:.5rem .75rem; border-radius:.65rem}
+.contact-list a:hover{background:rgba(235, 3, 215, 0.315)}
+
+/* Footer */
+.site-footer{border-top:1px solid var(--border); padding: 2rem 0; color: var(--muted); text-align:center}
+
+/* Accessibility */
+.skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{left:1rem;top:1rem;width:auto;height:auto;z-index:1000;background:#fff;color:#000;padding:.5rem;border-radius:.5rem}

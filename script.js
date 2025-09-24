@@ -11,6 +11,19 @@ if (toggle && nav) {
 const y = document.getElementById('year');
 if (y) y.textContent = new Date().getFullYear();
 
+
+// --- Scroll cue ---
+const cue = document.querySelector('.scroll-cue');
+if (cue){
+  // Click scrolls to next section
+  cue.addEventListener('click', () => {
+    const next = document.querySelector('#about') || document.querySelector('[id]');
+    if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+
+
+
 // --- THEME TOGGLE ---
 const THEME_KEY = 'theme';       // 'light' | 'dark'
 const root = document.documentElement;
@@ -59,3 +72,13 @@ function applyTheme(theme, save=false){
 
   if (save) localStorage.setItem(THEME_KEY, theme);
 }
+
+(function(){
+  try{
+    var saved = localStorage.getItem('theme');
+    var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var theme = saved || (systemDark ? 'dark' : 'light');
+    if (theme === 'light') document.documentElement.setAttribute('data-theme','light');
+  }catch(e){}
+})}; 
+

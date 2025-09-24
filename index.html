@@ -59,9 +59,30 @@
               <span class="angle"></span>
             </div>
           </div>
-        </div>        
+        </div>  
+        <section>
+          <button class="scroll-cue" aria-label="Scroll down" title="Scroll down">
+            <span class="visually-hidden">Scroll down</span>
+            <!-- Mouse outline -->
+            <svg class="mouse" width="28" height="44" viewBox="0 0 28 44" aria-hidden="true">
+              <rect x="1.5" y="1.5" rx="14" ry="14" width="25" height="41" class="mouse-body"/>
+              <circle cx="14" cy="12" r="3" class="mouse-wheel"/>
+            </svg>
+            <!-- Bouncing chevron -->
+            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+          </section>     
       </div>
     </section>
+
+    
+
+
+
+
+ 
 
     <section id="about" class="section">
       <div class="container narrow">
@@ -75,12 +96,15 @@
       </div>
     </section>
 
+
+
+
     <section id="work" class="section">
-      <div class="container">
+      <div class="container"> 
         <h2>Experience</h2>
         <div class="timeline">
           <article class="card">
-            <h3>Digitata Networks — Quality Assurance and Customer Support Engineer <span class="meta">Jan 2023 - Present</span></h3>
+            <h3>Digitata Networks — Quality Assurance and Customer Support Engineer <span class="meta">2022 - Present</span></h3>
             <p>
               In my role, I focus on ensuring the quality of bespoke telecommunications software. 
               I assist in ensuring seamless migration between telecommunications bespoke software. 
@@ -89,13 +113,6 @@
               I also work with product managers to interpret requirements and 
               translate them into test scenarios to ensure that the final product meets both business goals and user requirements.
               </p>
-          </article>
-          <article class="card">
-            <h3>Digitata Networks — Junior Software Developer <span class="meta">Nov 2022 - Jan 2023</span></h3>
-            <p>I specialised in developing and testing bespoke software for the telecommunications industry. 
-              I help develop and test customised solutions that drive innovation and efficiency. 
-              I work closely with a dynamic team to design, code, test, 
-              and optimise custom applications to ensure our clients stay ahead in a fast-paced market.</p>
           </article>
           <article class="card">
             <h3>MTN South Africa — Graduate Engineer: IoT/M2M Platforms and Cybersecurity <span class="meta">2022 - Less Than a Year</span></h3>
@@ -107,10 +124,6 @@
             <h3>MethodData — Junior Full‑Stack Developer <span class="meta">2021 - 2022</span></h3>
             <p>Worked on API integrations and serverless solutions for seamless data transfer between CRM platforms including Salesforce, 
               Smartsheets, and Fullbay into HubSpot as part of a collaborative development team.</p>
-          </article>
-          <article class="card">
-            <h3>Uav4Africa — Engineering Intern <span class="meta">2020 – 2021</span></h3>
-            <p>Conceptual design for a cost‑effective LOCUS drone recovery system; explored materials and mechanisms for reliability.</p>
           </article>
           <article class="card">
             <h3>Zaio — Front‑end Developer Intern <span class="meta">2019 – 2020</span></h3>
@@ -167,6 +180,7 @@
           <li><a href="https://www.linkedin.com/in/chabi-seopa/" target="_blank" rel="noreferrer">LinkedIn</a></li>
           <li><a href="https://github.com/charbileigh" target="_blank" rel="noreferrer">GitHub</a></li>
           <li><a href="https://www.instagram.com/charbilee/" target="_blank" rel="noreferrer">Instagram</a></li>
+          <li><a href="https://www.goodreads.com/user/show/34216723-chabi target="_blank" rel="noreferrer">Goodreads</a></li>
         </ul>
       </div>
     </section>
@@ -184,14 +198,3 @@
 
 
 
-
-<script>
-  (function(){
-    try{
-      var saved = localStorage.getItem('theme');
-      var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var theme = saved || (systemDark ? 'dark' : 'light');
-      if (theme === 'light') document.documentElement.setAttribute('data-theme','light');
-    }catch(e){}
-  })();
-</script>

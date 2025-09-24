@@ -95,15 +95,8 @@ p{margin:0 0 1rem}
   .site-nav ul{flex-direction:column; padding: .5rem}
 }
 
-/* Hero */
-/*.hero-grid{display:grid; grid-template-columns: 1.3fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items:center}
-.avatar{width: 220px; height:220px; border-radius: 22px; background: linear-gradient(135deg, rgba(124,172,248,.25), rgba(124,172,248,.05)); border:1px solid var(--border); box-shadow: var(--shadow); margin-inline:auto}
 
-@media (max-width: 900px){
-  .hero-grid{grid-template-columns: 1fr}
-}*/
-
-/* Your existing hero layout */
+/* existing hero layout */
 .hero-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:clamp(1.5rem,4vw,3rem); align-items:center}
 @media (max-width:900px){ .hero-grid{grid-template-columns:1fr} }
 

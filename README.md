@@ -1,4 +1,4 @@
-# Portfolio (Responsive)
+# Responsive Portfolio
 
 This is a mobile‑first, responsive portfolio starter built with semantic HTML, modern CSS (Flexbox/Grid), and a tiny bit of JS for the mobile nav.
 

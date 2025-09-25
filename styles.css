@@ -309,6 +309,9 @@ p{margin:0 0 1rem}
 .scroll-cue:hover{ opacity: 1; transform: translateX(-50%) translateY(-2px); }
 .scroll-cue:active{ transform: translateX(-50%) translateY(0); }
 
+
+/* This is for the mouse icon */
+
 /* Mouse icon */
 .scroll-cue .mouse-body{
   fill: none;
@@ -355,4 +358,79 @@ p{margin:0 0 1rem}
 /* Hide cue on very small screens or short viewports if you prefer */
 @media (max-height: 540px){
   .scroll-cue{ display:none; }
+}
+
+/* A11y helper */
+.visually-hidden{
+  position:absolute!important; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+
+/* Ensure the hero is a positioning context */
+.hero{ position:relative }
+
+/* --- Scroll cue (responsive) --- */
+.scroll-cue{
+  position:absolute;
+  left:50%;
+  /* Respect iOS/Android safe areas and give breathing room */
+  bottom: max(env(safe-area-inset-bottom, 0px), 1rem);
+  transform: translateX(-50%);
+  display:inline-grid; place-items:center; gap:.35rem;
+  background:transparent; border:0; cursor:pointer;
+  color: var(--muted);
+  opacity:.9;
+  z-index: 2; /* above hero contents, below header */
+  transition: opacity .2s ease, transform .2s ease;
+  /* Make the whole control scale responsively */
+  font-size: clamp(12px, 1.8vw, 16px); /* base for svg sizing via em */
+  line-height: 1;
+  padding:.25rem; /* touch target padding */
+}
+
+/* hover/focus */
+.scroll-cue:hover{ opacity:1; transform: translateX(-50%) translateY(-2px); }
+.scroll-cue:active{ transform: translateX(-50%) translateY(0); }
+.scroll-cue:focus-visible{
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: .5rem;
+}
+
+/* SVGs scale with font-size */
+.scroll-cue .mouse{ width: 1.75em; height: auto; }
+.scroll-cue .chev{ width: 1.2em; height: auto; }
+
+/* Mouse icon */
+.scroll-cue .mouse-body{
+  fill:none; stroke: currentColor; stroke-width: 2; opacity:.95;
+}
+.scroll-cue .mouse-wheel{
+  fill: currentColor;
+  animation: wheel 1.8s ease-in-out infinite;
+  transform-origin: 14px 12px; /* viewBox coords, stays correct as it scales */
+  opacity:.95;
+}
+
+/* Chevron */
+.scroll-cue .chev path{
+  fill:none; stroke: currentColor; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+  animation: bob 1.8s ease-in-out infinite;
+  opacity:.95;
+}
+
+/* Short viewports: nudge up a bit, don’t hide completely */
+@media (max-height: 600px){
+  .scroll-cue{ bottom: max(env(safe-area-inset-bottom, 0px), 0.5rem); }
+}
+/* Very small phones: reduce size slightly */
+@media (max-width: 380px){
+  .scroll-cue{ font-size: 12px; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .scroll-cue .mouse-wheel,
+  .scroll-cue .chev path{ animation: none !important; }
 }

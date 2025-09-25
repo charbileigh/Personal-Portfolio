@@ -1,0 +1,49 @@
+/* This is the legacy CSS for the Mouse */
+
+/* Mouse icon */
+.scroll-cue .mouse-body{
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  opacity: .9;
+}
+.scroll-cue .mouse-wheel{
+  fill: currentColor;
+  animation: wheel 1.8s ease-in-out infinite;
+  transform-origin: 14px 12px;
+  opacity: .9;
+}
+
+/* Chevron */
+.scroll-cue .chev path{
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: bob 1.8s ease-in-out infinite;
+  opacity: .9;
+}
+
+/* Keyframes */
+@keyframes wheel{
+  0%   { transform: translateY(0);       opacity: .9; }
+  50%  { transform: translateY(6px);     opacity: .4; }
+  100% { transform: translateY(0);       opacity: .9; }
+}
+@keyframes bob{
+  0%   { transform: translateY(0);       opacity: .9; }
+  50%  { transform: translateY(4px);     opacity: .5; }
+  100% { transform: translateY(0);       opacity: .9; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .scroll-cue .mouse-wheel,
+  .scroll-cue .chev path{ animation: none !important; }
+}
+
+/* Hide cue on very small screens or short viewports if you prefer */
+@media (max-height: 540px){
+  .scroll-cue{ display:none; }
+}

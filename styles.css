@@ -7,18 +7,106 @@
   --card: #121821;
   --border: #1c2531;
   --shadow: 0 10px 30px rgba(255, 3, 183, 0.15);
+  --link: #E75480;                 /* readable on dark */
+  --link-hover: var(--fg);          /* on hover/focus */
+  --link-hi: rgba(192, 68, 142, 0.729);  /* pink wash highlight */
+  --link-underline: rgba(192, 68, 143, .85);
 }
 
 /* Light theme overrides */
 :root[data-theme="light"]{
   --bg: #f6f7fb;
   --fg: #0e1420;
-  --muted: #4a5568;
+  --muted: #9e55b8;
   --accent: #C0448F;            /* keep your pink accent */
   --card: #ffffff;
   --border: #e3e8ef;
   --shadow: 0 10px 30px rgba(21, 12, 31, 0.321);
+  --link: #7a0e4f;                  /* readable on light */
+  --link-hover: #000;               /* subtle dark text on hover */
+  --link-hi: rgba(192, 68, 143, .18);
+  --link-underline: rgba(192, 68, 143, .8);
 }
+
+
+/* Changing the pointer */
+/* Custom circular cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 28px;          /* size of circle */
+  height: 28px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  pointer-events: none; /* let clicks pass through */
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out, background-color 0.25s ease;
+  z-index: 9999;
+  mix-blend-mode: difference; /* cool effect on dark/light backgrounds */
+}
+
+/* Grow the cursor slightly when hovering links/buttons */
+a:hover ~ .custom-cursor,
+button:hover ~ .custom-cursor,
+.custom-cursor.hovering {
+  transform: translate(-50%, -50%) scale(1.5);
+  background-color: var(--accent);
+}
+
+
+
+/* Changing of theme colours when hovering on texts with links */
+/* Content links inside sections: highlight-on-hover */
+.section .container :where(p, li, h3, h4, h5) a:not(.button):not(.brand){
+  position: relative;
+  color: var(--link);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  background-image: linear-gradient(var(--link-hi), var(--link-hi));
+  background-size: 0% 60%;
+  background-position: 0 85%;
+  background-repeat: no-repeat;
+  transition: background-size .22s ease, color .18s ease, border-color .18s ease;
+}
+
+/* Hover + keyboard focus */
+.section .container :where(p, li, h3, h4, h5) a:not(.button):not(.brand):hover,
+.section .container :where(p, li, h3, h4, h5) a:not(.button):not(.brand):focus-visible{
+  background-size: 100% 60%;
+  color: var(--link-hover);
+  border-color: var(--link-underline);
+  outline: none;
+}
+
+/* High-contrast visible focus ring for accessibility */
+.section .container :where(p, li, h3, h4, h5) a:not(.button):not(.brand):focus-visible{
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 35%, transparent);
+  border-radius: .2rem;
+}
+
+/* Utility to opt-in anywhere */
+.hl-link{
+  position: relative;
+  color: var(--link);
+  text-decoration: none;
+  background-image: linear-gradient(var(--link-hi), var(--link-hi));
+  background-size: 0% 60%;
+  background-position: 0 85%;
+  background-repeat: no-repeat;
+  transition: background-size .22s ease, color .18s ease, border-color .18s ease;
+  border-bottom: 1px solid transparent;
+}
+.hl-link:hover,
+.hl-link:focus-visible{
+  background-size: 100% 60%;
+  color: var(--link-hover);
+  border-color: var(--link-underline);
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 35%, transparent);
+  border-radius: .2rem;
+}
+
 
 
 
@@ -33,7 +121,7 @@
   border:1px solid var(--border); border-radius:.6rem;
   padding:.5rem .75rem; cursor:pointer; font-weight:600;
 }
-.theme-toggle:hover{ background:rgba(235, 3, 215, 0.1); }
+.theme-toggle:hover{ background:rgba(235, 3, 216, 0.394); }
 .theme-toggle .theme-icon{ width:1.1rem; display:inline-block; }
 
 
@@ -83,7 +171,7 @@ p{margin:0 0 1rem}
 .brand-name{opacity:.9}
 
 .site-nav ul{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
-.site-nav a{color:var(--muted);text-decoration:none;padding:.5rem;border-radius:.5rem}
+.site-nav a{color:var(--accent);text-decoration:none;padding:.5rem;border-radius:.5rem}
 .site-nav a:hover{color:var(--fg);background:rgba(235, 3, 215, 0.315)}
 
 /* Mobile nav */
@@ -103,14 +191,14 @@ p{margin:0 0 1rem}
   --header-bg: rgba(11,15,20,.7);  /* dark default */
   --header-border: var(--border);
   --nav-icon: var(--fg);           /* hamburger/icon color */
-  --nav-hover-bg: rgba(235, 3, 215, 0.12);
+  --nav-hover-bg: rgba(235, 3, 216, 0.568);
 }
 
 :root[data-theme="light"]{
   --header-bg: rgba(255,255,255,.75);   /* light glass */
   --header-border: #e3e8ef;
   --nav-icon: #0e1420;                  /* dark bars/icons */
-  --nav-hover-bg: rgba(0,0,0,.06);      /* softer hover */
+  --nav-hover-bg: rgba(225, 0, 255, 0.319);      /* softer hover */
 }
 
 /* 2) Use those vars in the header + nav */

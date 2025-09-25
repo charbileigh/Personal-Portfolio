@@ -81,3 +81,18 @@ function applyTheme(theme, save=false){
   }catch(e){}
 })}; 
 
+
+// Circular pointer
+const cursor = document.querySelector('.custom-cursor');
+
+document.addEventListener('mousemove', e => {
+  cursor.style.top = `${e.clientY}px`;
+  cursor.style.left = `${e.clientX}px`;
+});
+
+// Optional: grow cursor on interactive elements
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+});
+

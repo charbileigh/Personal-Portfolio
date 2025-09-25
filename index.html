@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chabi</title>
+  <title>Chabi Seopa</title>
   <meta name="description" content="Portfolio of Mmasechaba J F Seopa: Software Developer, cybersecurity enthusiast, passionate about disability and human rehabilitation." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,9 +91,52 @@
         </p>
       </div>
     </section>
+    
 
     <section id="work" class="section">
       <div class="container"> 
+        <div class="work-head">
+        <div class="exp-anim" aria-hidden="true" title="Quality in motion">
+          <!-- QA ring animation -->
+          <svg class="qa-badge" viewBox="0 0 64 64" width="64" height="64" role="img" focusable="false">
+            <!-- soft glow -->
+            <defs>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+
+            <!-- background ring -->
+            <circle cx="32" cy="32" r="22"
+                    class="ring-bg"
+                    fill="none" stroke-width="2" />
+
+            <!-- rotating accent arc -->
+            <circle cx="32" cy="32" r="22"
+                    class="ring-arc"
+                    fill="none" stroke-width="3"
+                    stroke-linecap="round"
+                    pathLength="100" />
+
+            <!-- pulsing dot -->
+            <circle cx="32" cy="10" r="" class="pulse"/>
+
+            <!-- check mark -->
+            <path class="check"
+                  d="M22 33.5l6 6 14-14"
+                  fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                  filter="url(#glow)"/>
+
+            <!-- sparkles -->
+            <!-- <g class="sparkles"> -->
+              <!-- <path d="M32 4 l0 6 M29 7 l6 0" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M56 32 l0 6 M53 35 l6 0" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M8 32 l0 6 M5 35 l6 0" stroke-width="1.5" stroke-linecap="round"/>
+            </g> -->
+          </svg>
+        </div>
+      </div>
         <h2>Experience</h2>
         <div class="timeline">
           <article class="card">
@@ -128,7 +171,52 @@
 
     <section id="education" class="section">
       <div class="container">
+        <!-- <h2>Education</h2> -->
+        <div class="edu-head">
+          
+          <div class="edu-anim" aria-hidden="true" title="Learning in motion">
+            <svg class="edu-badge" viewBox="0 0 64 64" width="64" height="64" role="img" focusable="false">
+              <defs>
+                <filter id="eduGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="2" result="b"/>
+                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+
+              <!-- background ring -->
+              <circle cx="32" cy="32" r="22" class="ring-bg" fill="none" stroke-width="2"/>
+
+              <!-- rotating arc -->
+              <circle cx="32" cy="32" r="22"
+                      class="ring-arc" fill="none" stroke-width="3" stroke-linecap="round"
+                      pathLength="100"/>
+
+              <!-- education icon: graduation cap -->
+              <g class="cap-group" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.8">
+                <!-- soft fill for the board -->
+                <polygon class="cap-fill" points="16 26, 32 20, 48 26, 32 32"/>
+                <!-- outline draws in -->
+                <polygon class="cap-stroke" points="16 26, 32 20, 48 26, 32 32" pathLength="100"/>
+                <!-- head band -->
+                <line class="cap-stroke" x1="24" y1="34" x2="40" y2="34" pathLength="100"/>
+                <!-- tassel cord + knot -->
+                <circle class="cap-knot" cx="48" cy="26" r="1.6"/>
+                <line class="cap-stroke" x1="48" y1="26" x2="48" y2="38" pathLength="100"/>
+                <!-- tassel ball (pulses) -->
+                <circle class="pulse" cx="48" cy="38" r="" filter="url(#eduGlow)"/>
+              </g>
+
+              <!-- sparkles -->
+              <!-- <g class="sparkles">
+                <path d="M32 6 l0 6 M29 9 l6 0" stroke-width="1.4" stroke-linecap="round"/>
+                <path d="M8 32 l0 6 M5 35 l6 0" stroke-width="1.4" stroke-linecap="round"/>
+                <path d="M56 32 l0 6 M53 35 l6 0" stroke-width="1.4" stroke-linecap="round"/>
+              </g> -->
+            </svg>
+          </div>
+        </div>
         <h2>Education</h2>
+
         <div class="cards-grid">
           <article class="card">
             <h3><a href="https://www.uct.ac.za/">University of Cape Town</a></h3>
@@ -167,6 +255,7 @@
     <section id="contact" class="section">
       <div class="container narrow">
         <h2>Contact</h2>
+        <h3>ദ്ദി(˵ •̀ ᴗ - ˵ ) ✧</h3>
         <p>Want to collaborate, hire me, or just say hi?</p>
         <ul class="contact-list">
           <li><a href="mailto:chabi.seopa@gmail.com">Email</a></li>

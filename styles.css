@@ -760,3 +760,77 @@ p{margin:0 0 1rem}
     animation: none !important;
   }
 }
+
+/* === UFO Animation Section === */
+#ufo-anim {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;          /* gives breathing room */
+  background: var(--bg);      /* follows theme */
+  border-block: 1px solid var(--border);
+  overflow: hidden;
+  position: relative;
+}
+
+#ufo-anim .anim-container {
+  width: 100%;
+  max-width: 800px;           /* keep it responsive */
+  margin-inline: auto;
+}
+
+/* SVG sizing */
+#ufo-anim svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* === Theme-aware coloring === */
+
+/* Speed lines */
+#ufo-anim .speedLineGroup line {
+  stroke: var(--muted);
+}
+
+/* Tractor beam */
+#ufo-anim .beam {
+  fill: var(--link);
+}
+
+/* Spotlight ellipse */
+#ufo-anim .spotlight {
+  fill: var(--accent);
+}
+
+/* Cow body */
+#ufo-anim .cow {
+  fill: var(--fg);
+}
+
+/* Ship body */
+#ufo-anim .ship path {
+  fill: var(--accent);
+}
+
+/* Alien inside */
+#ufo-anim .alien {
+  fill: var(--fg);
+}
+
+/* Ship lights (blinking dots) */
+#ufo-anim .light {
+  fill: currentColor;         /* follows text color */
+  color: var(--link);
+  transition: fill .3s ease;
+}
+
+/* Spotlight hover pulse */
+#ufo-anim .spotlightHover {
+  transform-origin: 50% 50%;
+}
+
+/* Ensure smooth transitions on theme change */
+#ufo-anim * {
+  transition: fill .25s linear, stroke .25s linear, background-color .25s linear;
+}

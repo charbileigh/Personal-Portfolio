@@ -176,3 +176,70 @@ document.addEventListener('DOMContentLoaded', () => {
     .to(ship, { x: -1800, duration: 2, ease: 'back.in(0.8)' }, '-=2')
     .add(speedLineTL, 0);
 });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+const wrap = document.getElementById('bulb-container');
+  if (!wrap || !window.gsap) return;
+
+  const svg   = document.getElementById('bulb-svg-node');
+  const leaf  = svg.querySelector('#leaf');
+  const parts = [
+    svg.querySelector('#bulb-thread-bottom'),
+    svg.querySelector('#bulb-thread-middle'),
+    svg.querySelector('#bulb-thread-top'),
+    svg.querySelector('#bulb-head')
+  ].filter(Boolean);
+
+  const glows = Array.from(svg.querySelectorAll('#glow-group path'));
+
+  // helper: prime stroke dashes for "draw" effect
+  function primeDraw(el){
+    const len = el.getTotalLength?.() || 0;
+    el.style.strokeDasharray  = `${len}`;
+    el.style.strokeDashoffset = `${len}`;
+    return len;
+  }
+
+  // init states
+  gsap.set(leaf, { transformOrigin: '50% 110%', scale: 0, opacity: 1 });
+  parts.forEach(primeDraw);
+  glows.forEach(g => { primeDraw(g); g.style.opacity = 1; });
+
+  const tl = gsap.timeline({ repeat: -1, repeatDelay: 2 });
+
+  // draw threads bottom -> head
+  parts.forEach((p, i) => {
+    tl.to(p, { strokeDashoffset: 0, duration: 0.9, ease: 'power1.inOut' }, i ? '<' : 0);
+  });
+
+  // pop the leaf + subtle settle
+  tl.to(leaf, { scale: 0.72, duration: 0.6, ease: 'back.out(2)' }, '-=0.3')
+    .fromTo(wrap, { rotation: -9 }, { rotation: 0, duration: 0.8, ease: 'elastic.out(1, 0.6)' }, '<');
+
+  // glow burst outwards (draw from center to ends)
+  glows.forEach((g, i) => {
+    const d = 0.5 + (i % 3) * 0.06; // tiny staggering
+    tl.to(g, { strokeDashoffset: 0, duration: d, ease: 'none' }, '-=0.3');
+  });
+
+  // fade the glow and lines, then reset
+  tl.to(glows, { opacity: 0, duration: 0.6, ease: 'power1.out' }, '-=0.2')
+    .to([leaf, ...parts], { opacity: 0, duration: 0.7, ease: 'power1.in' }, '+=0.7')
+    .add(() => {
+      // reset for loop
+      gsap.set(leaf, { scale: 0, opacity: 1 });
+      parts.forEach(p => {
+        const len = p.style.strokeDasharray || 0;
+        p.style.strokeDashoffset = len;
+        p.style.opacity = 1;
+      });
+      glows.forEach(g => {
+        const len = g.style.strokeDasharray || 0;
+        g.style.strokeDashoffset = len;
+        g.style.opacity = 1;
+      });
+    });
+});
+

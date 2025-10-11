@@ -18,7 +18,7 @@
   --bg: #f6f7fb;
   --fg: #0e1420;
   --muted: #9e55b8;
-  --accent: #C0448F;            /* keep your pink accent */
+  --accent: #C0448F;            /* keep pink accent */
   --card: #ffffff;
   --border: #e3e8ef;
   --shadow: 0 10px 30px rgba(21, 12, 31, 0.321);
@@ -833,4 +833,61 @@ p{margin:0 0 1rem}
 /* Ensure smooth transitions on theme change */
 #ufo-anim * {
   transition: fill .25s linear, stroke .25s linear, background-color .25s linear;
+}
+
+/* Contact: 2-column layout with animation */
+.contact-grid{
+  display:grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items:center;
+}
+@media (max-width: 820px){
+  .contact-grid{ grid-template-columns: 1fr; }
+  .contact-anim{ order: -1; } /* anim above on mobile; remove if you prefer below */
+}
+
+/* Animation sizing */
+#bulb-container{
+  width: 100%;
+  max-width: 420px;
+  margin-inline:auto;
+  aspect-ratio: 428 / 372.5;
+}
+#bulb-svg-node{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* Theme-aware colors */
+.bulb-stroke{
+  stroke: var(--fg);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.bulb-leaf{
+  fill: color-mix(in oklab, var(--accent) 70%, transparent);
+}
+.bulb-glow path{
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 1;
+}
+
+/* soft glow on accent in both themes */
+.contact-anim{
+  filter: drop-shadow(0 0 12px color-mix(in oklab, var(--accent) 28%, transparent));
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .contact-anim{ filter: none; }
+}
+@media (min-width: 821px){
+  .contact-anim{ order:-1; }
 }
